@@ -7,6 +7,7 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  // ENV VARIABLE MUST BE READ HERE (NOT AT TOP LEVEL)
   const MONGODB_URI = process.env.MONGODB_URI;
 
   if (!MONGODB_URI) {
@@ -30,3 +31,4 @@ async function dbConnect() {
 }
 
 export default dbConnect;
+
