@@ -27,7 +27,7 @@ html {
     background-image:
       radial-gradient(1000px 500px at 10% 10%, rgba(127, 47, 255, 0.06), transparent 60%),
       radial-gradient(1000px 500px at 90% 90%, rgba(255, 94, 0, 0.06), transparent 60%),
-      linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+      linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
     background-attachment: fixed;
   }
 }
@@ -39,6 +39,11 @@ html {
   img[alt="Next.js logo"] {
     display: none !important;
   }
+
+  nextjs-static-indicator,
+  nextjs-portal,
+  [id^="__next-indicator"],
+  [class^="__next-indicator"],
   img[src*="next.svg"],
   img[src*="vercel.svg"],
   svg[aria-label*="Next"],
@@ -52,6 +57,7 @@ html {
     transform-style: preserve-3d;
     transition: transform 400ms ease, box-shadow 400ms ease;
   }
+
   .tilt-3d:hover {
     transform: perspective(1000px) rotateX(6deg) rotateY(-6deg) translateZ(8px);
     box-shadow:
@@ -65,6 +71,7 @@ html {
     backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
+
   .dark .glass {
     background-color: rgba(255, 255, 255, 0.06);
   }
@@ -79,35 +86,39 @@ html {
     position: relative;
     overflow: hidden;
   }
+
   .animated-border::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,0.35),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent);
     transform: translateX(-100%);
     animation: shimmer 3s ease-in-out infinite;
   }
 
   @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
   }
 
   /* Video overlay */
   .video-overlay {
-    box-shadow: inset 0 0 80px rgba(0,0,0,0.35);
+    box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.35);
   }
 
   /* HUD grid */
   .hud-grid {
     background-image:
-      linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     background-size: 60px 60px;
     opacity: 0.25;
     mix-blend-mode: overlay;
@@ -115,59 +126,66 @@ html {
 
   /* Code rain */
   .code-rain {
-    background-image: repeating-linear-gradient(
-      to bottom,
-      rgba(127,47,255,0.12) 0px,
-      rgba(127,47,255,0.12) 2px,
-      transparent 2px,
-      transparent 12px
-    );
+    background-image: repeating-linear-gradient(to bottom,
+        rgba(127, 47, 255, 0.12) 0px,
+        rgba(127, 47, 255, 0.12) 2px,
+        transparent 2px,
+        transparent 12px);
     animation: rain 12s linear infinite;
     opacity: 0.35;
     mix-blend-mode: screen;
   }
 
   @keyframes rain {
-    0% { background-position: 0 -2000px; }
-    100% { background-position: 0 0; }
+    0% {
+      background-position: 0 -2000px;
+    }
+
+    100% {
+      background-position: 0 0;
+    }
   }
 
   /* Glossy page wrapper below hero */
   .page-gloss {
     position: relative;
     background-image:
-      radial-gradient(800px 400px at 10% 30%, rgba(255,255,255,0.08), transparent 60%),
-      radial-gradient(800px 400px at 90% 70%, rgba(255,255,255,0.06), transparent 60%);
+      radial-gradient(800px 400px at 10% 30%, rgba(255, 255, 255, 0.08), transparent 60%),
+      radial-gradient(800px 400px at 90% 70%, rgba(255, 255, 255, 0.06), transparent 60%);
     backdrop-filter: saturate(1.15);
   }
+
   .dark .page-gloss {
     background-image:
-      radial-gradient(800px 400px at 10% 30%, rgba(255,255,255,0.06), transparent 60%),
-      radial-gradient(800px 400px at 90% 70%, rgba(255,255,255,0.04), transparent 60%);
+      radial-gradient(800px 400px at 10% 30%, rgba(255, 255, 255, 0.06), transparent 60%),
+      radial-gradient(800px 400px at 90% 70%, rgba(255, 255, 255, 0.04), transparent 60%);
   }
 
   /* Glossy section panels */
   .surface-gloss {
-    background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.08));
-    border: 1px solid rgba(255,255,255,0.18);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.08));
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.24),
-      inset 0 -1px 0 rgba(255,255,255,0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.24),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.12),
       0 28px 90px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(18px) saturate(1.3);
   }
+
   .dark .surface-gloss {
-    background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.11));
-    border: 1px solid rgba(255,255,255,0.26);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.11));
+    border: 1px solid rgba(255, 255, 255, 0.26);
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.24),
-      inset 0 -1px 0 rgba(255,255,255,0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.24),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.14),
       0 38px 120px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(20px) saturate(1.45);
   }
+
   .section-dark-gloss {
     background-color: #000;
   }
+
   .section-dark-gloss.surface-gloss {
     background-color: #000;
     background-image: none;
@@ -178,6 +196,7 @@ html {
     position: relative;
     overflow: hidden;
   }
+
   .section-shimmer::after {
     content: "";
     position: absolute;
@@ -185,7 +204,7 @@ html {
     bottom: 0;
     width: 100%;
     left: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
     filter: blur(4px);
     animation: shimmer 9s ease-in-out infinite;
   }

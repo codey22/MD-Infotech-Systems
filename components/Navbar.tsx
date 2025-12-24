@@ -14,6 +14,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   /* Scroll background */
   useEffect(() => {
@@ -26,9 +27,14 @@ export default function Navbar() {
   /* Close on outside click or ESC */
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setOpen(false);
+      // Don't close if clicking the menu or the button
+      if (
+        (menuRef.current && menuRef.current.contains(e.target as Node)) ||
+        (buttonRef.current && buttonRef.current.contains(e.target as Node))
+      ) {
+        return;
       }
+      setOpen(false);
     };
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -43,11 +49,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all ${
-        scrolled
-          ? "bg-white/60 dark:bg-black/30 backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all ${scrolled
+        ? "bg-white/60 dark:bg-black/30 backdrop-blur-xl"
+        : "bg-transparent"
+        }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
@@ -86,25 +91,23 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
+          ref={buttonRef}
           aria-label="Open menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className="md:hidden relative z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-xl"
         >
           <span
-            className={`absolute h-0.5 w-5 bg-current transition-transform ${
-              open ? "rotate-45" : "-translate-y-1.5"
-            }`}
+            className={`absolute h-0.5 w-5 bg-current transition-transform ${open ? "rotate-45" : "-translate-y-1.5"
+              }`}
           />
           <span
-            className={`absolute h-0.5 w-5 bg-current transition-opacity ${
-              open ? "opacity-0" : "opacity-100"
-            }`}
+            className={`absolute h-0.5 w-5 bg-current transition-opacity ${open ? "opacity-0" : "opacity-100"
+              }`}
           />
           <span
-            className={`absolute h-0.5 w-5 bg-current transition-transform ${
-              open ? "-rotate-45" : "translate-y-1.5"
-            }`}
+            className={`absolute h-0.5 w-5 bg-current transition-transform ${open ? "-rotate-45" : "translate-y-1.5"
+              }`}
           />
         </button>
       </div>
@@ -112,11 +115,10 @@ export default function Navbar() {
       {/* Mobile dropdown */}
       <div
         ref={menuRef}
-        className={`md:hidden absolute inset-x-0 top-full origin-top transition-all duration-300 ${
-          open
-            ? "scale-y-100 opacity-100"
-            : "pointer-events-none scale-y-95 opacity-0"
-        }`}
+        className={`md:hidden absolute inset-x-0 top-full origin-top transition-all duration-300 ${open
+          ? "scale-y-100 opacity-100"
+          : "pointer-events-none scale-y-95 opacity-0"
+          }`}
       >
         <nav className="mx-4 mt-2 rounded-2xl border border-white/10 bg-white/80 dark:bg-black/60 backdrop-blur-xl shadow-2xl">
           {navItems.map((item) => (

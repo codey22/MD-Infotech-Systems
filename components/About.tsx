@@ -21,12 +21,12 @@ export default function About() {
         </div>
         <div className="relative tilt-3d rounded-2xl border border-white/10 glass p-2">
           <Image
-            src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?q=80&w=3840&auto=format&fit=crop"
-            alt="AI and code visuals"
-            width={3840}
-            height={2160}
-            className="rounded-xl object-cover shadow-xl"
-            priority
+            src="/eye-12452.gif"
+            alt="AI Neural Network Animation"
+            width={800}
+            height={600}
+            className="rounded-xl object-cover shadow-xl w-full h-auto"
+            unoptimized
           />
           <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-white/15" />
         </div>
