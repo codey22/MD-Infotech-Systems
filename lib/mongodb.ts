@@ -14,8 +14,7 @@ async function dbConnect() {
     }
 
     if (!MONGODB_URI) {
-        console.warn("MONGODB_URI is missing. This is expected during build time if not provided, but will fail at runtime.");
-        return null;
+        throw new Error("MONGODB_URI is missing. Please define it in .env.local (development) or Vercel Environment Variables (production).");
     }
 
     if (!cached.promise) {
